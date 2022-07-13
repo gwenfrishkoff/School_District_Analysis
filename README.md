@@ -26,8 +26,8 @@ The first source data file (filename = 'schools_complete.csv') has the following
 	<li> It 16 rows (first row contains headers);
 	<li> It contains 5 columns:
 		<ol>
-		<li> Column A contains Indices (0-14)
-		<li> Columns B-C contain string data (school names & types)
+		<li> Column A contains Indices (integers: 0-14)
+		<li> Columns B-C contain strings (school names & types)
 		<li> Columns D-E contain numeric (integer) data 
 		</ol>
 	<li> The headers (Keys) are:
@@ -39,15 +39,14 @@ The first source data file (filename = 'schools_complete.csv') has the following
 		<li> "budget"
 		</ol>
 	</ol>
-At a glance, there do not appear to be any anomalies in this data set (e.g., no missing data or mis-matched data types).
 
 The second source data file (filename = 'students_complete.csv') has the following structure:
 	<ol>
 	<li> It 39171 rows (1st row contains headers);
 	<li> It contains 7 columns:
 		<ol>
-		<li> Column A contains Indices (0-39169, n=39170 rows of data)
-		<li> Columns B-E contain string data (student names, grades, & school)
+		<li> Column A contains Indices (integers: 0-39169 -->  n=39170 rows of data)
+		<li> Columns B-E contain strings (student names, grades, & school)
 		<li> Columns F-G contain numeric (integer) data 
 		</ol>
 	<li> The headers (Keys) are:
@@ -61,35 +60,40 @@ The second source data file (filename = 'students_complete.csv') has the followi
 		<li> "math_score"
 		</ol>
 	</ol>
-Pivot table summary shows that data are relatively clean. There are minor issues with consistency (e.g., some student names are preceded or followed by titles, such as "Dr." or "MD"). 
+ 
+
+## Data Cleaning with Python
+We used python methods -- .count(), .notnull(), & .isnull() -- to confirm that there were missing values in either of the source datasets. When we converted the student_name column to a list, we found some  minor consistencies: some names contain prefixes, such as "Dr.", or  suffixes, such as "MD." We used the .split() method to determine that 1531 (~4%) of names needed to be fixed. We identified all unique prefixes and suffixes using for-loops and the set() method, and standardized a final list of names using the .str.replace() method.
 
 ## Python Analysis
-We used python methods -- .count(), .notnull(), & .isnull() -- to confirm that there are missing values in the data.
-
-We then used Python (v 3.9.7) to automate the analysis and to output analysis results to a text (.csv) file, as described below.
+We then used Python (v 3.9.7) to automate numeric analysis and output analysis results to a text (.csv) file, as described below.
 
 ## Results (Files Created)
-The XXX code that we created resulted in the following outputs (files created):
+The code that we created resulted in the following outputs (files created):
 	<ol>
 	<li> Data Analysis Results File = 'XXX'; and
-	<li> XXX Script = 'XXX';
+	<li> Python Script = 'PyCitySchools.py';
 	</ol>
 
-The analysis results file (filename = 'XXX') has the following structure:
+The analysis results file (filename = 'XXX') is a school district summary that provides the following key metrics:
 	<ol>
-	<li> It contains XXX rows (including a title row and XXX rows with tabulated results);
-	<li> The first row of tabulated results shows XXX;
-	<li> The next XXX rows show XXX; and
-	<li> The final XXX rows show XXX.
+	<li> Total number of students
+	<li> Total number of schools
+	<li> Total budget
+	<li> Average math score
+	<li> Average reading score
+	<li> Percentage of students who passed math
+	<li> Percentage of students who passed reading
+	<li> Overall passing percentage
 	</ol>
 
-The XXX script (filename = 'XXX') has the following structure:
+The python script (filename = 'PyCitySchools.py') has the following structure:
 	<ol>
-	<li> It contains XXX rows (including rows with code comments and annotations);
-	<li> The first chunk of code imports dependencies (python modules);
-	<li> The next chunk of code declares and initializes key variables (including empty lists and dictionary objects);
-	<li> The subsequent chunk of code opens and reads the source (.csv) data using python; 
-	<li> The next several chunks of code determine XXX; and
+	<li> It contains XXX cells of code;
+	<li> The first cell imports dependencies (python modules);
+	<li> The next cell declares and initializes key variables (including empty lists and dictionary objects);
+	<li> The subsequent cell opens and reads the source (.csv) data using python; 
+	<li> The next cell merges the school and student data to create a single DataFrame for analysis; and
 	<li> The final chunk of code prints results to the terminal and saves them to a text file.
 	</ol>
 
