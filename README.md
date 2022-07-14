@@ -1,17 +1,19 @@
 # District-Wide Analysis of Standardized Test Data (using Python & Pandas)
 
 ## Project Overview
-Our client is Maria, a public school official, who is responsible for analyzing, reporting, and presenting district-wide analysis of standardized test scores in Math & Reading. She wishes to analyze data from different schools, individual students (within schools), and learning domains (reading, math). Results will be presented to the school board, which will use this information to inform budget allotments (funding priorities). Maria has requested the following deliverables:  
+Our client is Maria, a public school official, who is responsible for analyzing, reporting, and presenting district-wide analysis of standardized test scores in Math & Reading. She wishes to analyze data from different schools, individual students (within schools), and learning domains (reading and math). Results will be presented to the school board, which will use this information to inform budget allotments (funding priorities). Maria has requested the following deliverables:  
 	<ol>
-	<li> A high-level snapshot of the district's key metrics, presented in a table format
-	<li> An overview of the key metrics for each school, presented in a table format
+	<li> A high-level snapshot of the district's key metrics, presented in a table;
+	<li> An overview of the key metrics for each school, presented in a table;
 	<li> Tables presenting each of the following metrics:
-	<li> Top 5 and bottom 5 performing schools, based on the overall passing rate
-	<li> The average math score received by students in each grade level at each school
-	<li> The average reading score received by students in each grade level at each school
-	<li> School performance based on the budget per student
-	<li> School performance based on the school size 
-	<li> School performance based on the type of school
+		<ol>
+		<li> Top 5 and bottom 5 performing schools, based on the overall passing rate;
+		<li> The average math score received by students in each grade level at each school;
+		<li> The average reading score received by students in each grade level at each school;
+		<li> School performance based on the budget per student;
+		<li> School performance based on the school size; and 
+		<li> School performance based on the type of school.
+		</ol>
 	</ol>
 
 ## Resources (Source Data & Analysis Software)
@@ -63,19 +65,13 @@ The second source data file (filename = 'students_complete.csv') has the followi
  
 
 ## Data Cleaning with Python ('PyCitySchools_cleaning_student_names.ipynb')
-We used Python (v 3.9.7) methods to create a data cleaning script (file name = 'PyCitySchools_cleaning_student_names.ipynb') Methods including .count(), .notnull(), & .isnull() were to confirm that there were no missing values in either of the source datasets. When we converted the student_name column to a list, we found some  minor consistencies: some names contain prefixes, such as "Dr.", or  suffixes, such as "MD." We used the .split() method to determine that 1531 (~4%) of names needed to be fixed. We identified all unique prefixes and suffixes using for-loops and the set() method, and standardized a final list of names using the .str.replace() method. CLeaned data are stored in a .csv file ('clean_students_complete.csv'), which was used to complete subsequent analyses.
+We used Python (v 3.9.7) methods to create a data cleaning script (file name = 'PyCitySchools_cleaning_student_names.ipynb'). Python methods -- including .count(), .notnull(), & .isnull() -- were used to confirm that there are no missing values in either of the source datasets. When we converted the student_name column to a list, we found some  minor consistencies: some names contain prefixes, such as "Dr.", or  suffixes, such as "MD." We used the .split() method to determine that 1531 (~4%) of names needed to be fixed. We identified all unique prefixes and suffixes using for-loops and the set() method, and standardized a final list of names using the .str.replace() method. CLeaned data are stored in a .csv file ('clean_students_complete.csv'), which was used to complete subsequent analyses.
 
-## Python Analysis
-Python analyses were conducted to show student performance & proficiency patterns and trends, as described below. The code that we created resulted in the following outputs (files created):
+## Python Analysis ('PyCitySchools_Challenge.ipynb')
+Python analyses were conducted to show student performance & proficiency patterns and trends and saved to a file (file name = 'PyCitySchools_Challenge.ipynb'). When this code is run, it produces the following key metrics:
 	<ol>
-	<li> Data Analysis Results File = 'XXX'; and
-	<li> Python Script = 'PyCitySchools.ipynb';
-	</ol>
-
-The analysis results file (filename = 'XXX') is a school district summary that provides the following key metrics:
-	<ol>
-	<li> Total number of students
-	<li> Total number of schools
+	<li> Total number of students 
+	<li> Total number of schools 
 	<li> Total budget
 	<li> Average math score
 	<li> Average reading score
@@ -86,12 +82,12 @@ The analysis results file (filename = 'XXX') is a school district summary that p
 
 We used descriptive stats — .sum() and .mean() — to determine the total number of students and schools, the total budget, and average reading and math scores.
 
-To get the percentage of students who passed math and reading, we wrote python code to do the following:
+To get the percentage of students who passed math and reading, we wrote python code that executes the following steps:
 	<ol>
-	<li> Determine the passing grade.
-	<li> Get the number of students who passed math and reading in separate DataFrames.
-	<li> Calculate the number of students who passed math and reading.
-	<li> Calculate the percentage of students who passed math and reading.
+	<li> Determines the passing grade.
+	<li> Gets the number of students who passed math and reading in separate DataFrames.
+	<li> Calculates the number of students who passed math and reading.
+	<li> Calculates the percentage of students who passed math and reading.
 	</ol>
 
 To get the overall passing percentage, we wrote code to do the following:
@@ -99,16 +95,6 @@ To get the overall passing percentage, we wrote code to do the following:
 	<li> Get the number of students who passed both math and reading in a DataFrame.
 	<li> Calculate the number of students who passed both math and reading.
 	<li> Calculate the percentage of students who passed both math and reading.
-	</ol>
-
-The python script (filename = 'PyCitySchools.ipynb') that executes this code has the following structure:
-	<ol>
-	<li> It contains XXX cells of code;
-	<li> The first cell imports dependencies (python modules);
-	<li> The next cell declares and initializes key variables (including empty lists and dictionary objects);
-	<li> The subsequent cell opens and reads the source (.csv) data using python; 
-	<li> The next cell merges the school and student data to create a single DataFrame for analysis; and
-	<li> The final chunk of code prints results to the terminal and saves them to a text file.
 	</ol>
 
 ## Summary & Conclusions
