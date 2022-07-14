@@ -1,7 +1,7 @@
 # District-Wide Analysis of Standardized Test Data (using Python & Pandas)
 
 ## Project Overview
-Our client is Maria, a public school official, who is responsible for analyzing, reporting, and presenting district-side analysis of standardized test scores in Math & Reading to provide insights into student performance & proficiency patterns and trends. She wishes to analyze data from different schools, individual students (within schools), and learning domains (reading, math). Results will be presented to the school board, which will use this information to inform budget allotments (funding priorities). Maria has requested the following deliverables:  
+Our client is Maria, a public school official, who is responsible for analyzing, reporting, and presenting district-wide analysis of standardized test scores in Math & Reading. She wishes to analyze data from different schools, individual students (within schools), and learning domains (reading, math). Results will be presented to the school board, which will use this information to inform budget allotments (funding priorities). Maria has requested the following deliverables:  
 	<ol>
 	<li> A high-level snapshot of the district's key metrics, presented in a table format
 	<li> An overview of the key metrics for each school, presented in a table format
@@ -23,7 +23,7 @@ To accomplish these tasks, we used the following resources:
 
 The first source data file (filename = 'schools_complete.csv') has the following structure:
 	<ol>
-	<li> It 16 rows (first row contains headers);
+	<li> It contains 16 rows (1st row = headers);
 	<li> It contains 5 columns:
 		<ol>
 		<li> Column A contains Indices (integers: 0-14)
@@ -42,7 +42,7 @@ The first source data file (filename = 'schools_complete.csv') has the following
 
 The second source data file (filename = 'students_complete.csv') has the following structure:
 	<ol>
-	<li> It 39171 rows (1st row contains headers);
+	<li> It contains 39171 rows (1st row = headers);
 	<li> It contains 7 columns:
 		<ol>
 		<li> Column A contains Indices (integers: 0-39169 -->  n=39170 rows of data)
@@ -62,17 +62,14 @@ The second source data file (filename = 'students_complete.csv') has the followi
 	</ol>
  
 
-## Data Cleaning with Python
-We used python methods -- .count(), .notnull(), & .isnull() -- to confirm that there were missing values in either of the source datasets. When we converted the student_name column to a list, we found some  minor consistencies: some names contain prefixes, such as "Dr.", or  suffixes, such as "MD." We used the .split() method to determine that 1531 (~4%) of names needed to be fixed. We identified all unique prefixes and suffixes using for-loops and the set() method, and standardized a final list of names using the .str.replace() method.
+## Data Cleaning with Python ('PyCitySchools_cleaning_student_names.ipynb')
+We used Python (v 3.9.7) methods to create a data cleaning script (file name = 'PyCitySchools_cleaning_student_names.ipynb') Methods including .count(), .notnull(), & .isnull() were to confirm that there were no missing values in either of the source datasets. When we converted the student_name column to a list, we found some  minor consistencies: some names contain prefixes, such as "Dr.", or  suffixes, such as "MD." We used the .split() method to determine that 1531 (~4%) of names needed to be fixed. We identified all unique prefixes and suffixes using for-loops and the set() method, and standardized a final list of names using the .str.replace() method. CLeaned data are stored in a .csv file ('clean_students_complete.csv'), which was used to complete subsequent analyses.
 
 ## Python Analysis
-We then used Python (v 3.9.7) to automate numeric analysis and output analysis results to a text (.csv) file, as described below.
-
-## Results (Files Created)
-The code that we created resulted in the following outputs (files created):
+Python analyses were conducted to show student performance & proficiency patterns and trends, as described below. The code that we created resulted in the following outputs (files created):
 	<ol>
 	<li> Data Analysis Results File = 'XXX'; and
-	<li> Python Script = 'PyCitySchools.py';
+	<li> Python Script = 'PyCitySchools.ipynb';
 	</ol>
 
 The analysis results file (filename = 'XXX') is a school district summary that provides the following key metrics:
@@ -87,7 +84,24 @@ The analysis results file (filename = 'XXX') is a school district summary that p
 	<li> Overall passing percentage
 	</ol>
 
-The python script (filename = 'PyCitySchools.py') has the following structure:
+We used descriptive stats — .sum() and .mean() — to determine the total number of students and schools, the total budget, and average reading and math scores.
+
+To get the percentage of students who passed math and reading, we wrote python code to do the following:
+	<ol>
+	<li> Determine the passing grade.
+	<li> Get the number of students who passed math and reading in separate DataFrames.
+	<li> Calculate the number of students who passed math and reading.
+	<li> Calculate the percentage of students who passed math and reading.
+	</ol>
+
+To get the overall passing percentage, we wrote code to do the following:
+	<ol>
+	<li> Get the number of students who passed both math and reading in a DataFrame.
+	<li> Calculate the number of students who passed both math and reading.
+	<li> Calculate the percentage of students who passed both math and reading.
+	</ol>
+
+The python script (filename = 'PyCitySchools.ipynb') that executes this code has the following structure:
 	<ol>
 	<li> It contains XXX cells of code;
 	<li> The first cell imports dependencies (python modules);
@@ -100,20 +114,14 @@ The python script (filename = 'PyCitySchools.py') has the following structure:
 ## Summary & Conclusions
 Analysis results suggest the following conclusions:
 	<ol>
-	<li> XXX.
-	<li> XXX:
-		<ol>
-    		<li> XXX,
-        	<li> XXX, and
-        	<li> XXX.
-		</ol>
-	<li> XXX:
-		<ol>
-    		<li> XXX;
-        	<li> XXX; and
-        	<li> XXX;
-		</ol>
-	<li> XXX.
+	<li> There are 39,170 students represented in these data;
+	<li> There are 15 schools;
+	<li> The total (district-wide) budget is $24,649,428;
+	<li> The average math score is 78.99;
+	<li> The average reading score is 81.87;
+	<li> 75% students received passing math scores;
+	<li> 86% students received passing reading scores; and
+	<li> 65% students received passing overall scores.
 	</ol>
 
 
